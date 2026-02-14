@@ -28,19 +28,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     // Single useEffect for Load/Save logic to avoid race conditions
     useEffect(() => {
-        // Load on mount
-        if (!initialized.current) {
-            const savedCart = localStorage.getItem("ganapathi_cart");
-            if (savedCart) {
-                try {
-                    const parsed = JSON.parse(savedCart);
+        const savedCart = localStorage.getItem("ganapathi_cart");
+        if (savedCart) {
+            try {
+                const parsed = JSON.parse(savedCart);
+                if (Array.isArray(parsed)) {
                     setCart(parsed);
-                } catch (e) {
-                    console.error("Failed to parse cart", e);
                 }
+            } catch (e) {
+                console.error("Failed to parse cart", e);
             }
-            initialized.current = true;
         }
+        initialized.current = true;
     }, []);
 
     // Separate effect for saving ONLY after initialization
