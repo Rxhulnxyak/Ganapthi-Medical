@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #279df1;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101b22;
+
+  --font-display: var(--font-lexend), "Lexend", sans-serif;
+
+  /* Retain default values for radius if needed, or customize */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Custom utilities */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  font-family: var(--font-display);
+}
