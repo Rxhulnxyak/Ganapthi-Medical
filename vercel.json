@@ -1,21 +1,20 @@
 {
     "version": 2,
-    "builds": [{
+    "builds": [
+        {
             "src": "admin/package.json",
-            "use": "@vercel/next"
+            "use": "@vercel/next",
+            "config": {
+                "maxLambdaSize": "50mb"
+            }
         },
         {
             "src": "web/package.json",
-            "use": "@vercel/next"
+            "use": "@vercel/next",
+            "config": {
+                "maxLambdaSize": "50mb"
+            }
         }
     ],
-    "routes": [{
-            "src": "/admin/(.*)",
-            "dest": "admin/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/web/$1"
-        }
-    ]
+    "routes": []
 }
